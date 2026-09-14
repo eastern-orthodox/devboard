@@ -1,9 +1,11 @@
-require('dotenv').config();
+const path = require('path');
+const dotenv = require('dotenv');
 
-const env = {
-  port: process.env.PORT,
-  nodeEnv: process.env.NODE_ENV,
-  clientUrl: process.env.CLIENT_URL,
+dotenv.config({ path: path.join(__dirname, '../../.env') });
+
+module.exports = {
+  PORT: parseInt(process.env.PORT, 10),
+  NODE_ENV: process.env.NODE_ENV,
+  
+  ...process.env,
 };
-
-module.exports = env;
